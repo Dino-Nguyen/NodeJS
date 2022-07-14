@@ -34,14 +34,14 @@ console.log(req.params)
 const student = students.find((s) => s.id === +req.params.id)
 res.json(student)
 })
-router.post('/', (req, res) => {
+router.post('/',authMdw, (req, res) => {
     students.push({
         id :3, 
         name: "C"
     })
     res.send('ok')
 })
-router.delete("/:id", (req, res) => {
+router.delete("/:id",authMdw, (req, res) => {
     students.splice(2, 1)
     res.send('delete 2')
 })

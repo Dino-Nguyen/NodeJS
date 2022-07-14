@@ -2,7 +2,7 @@ const checkLogin = () => {
     return false
 }
 const authMdw = (req, res, next) => {
-      const auth = false
+      const auth = true
       if (auth) {
         next();
       }
