@@ -4,8 +4,8 @@ const router = express.Router()
 router.get("/", (req, res) => {
     res.send('teachers')
 })
-router.post("/add")
-router.put("/edit")
-router.delete("/delete")
+router.post("/")
+router.put("/:id")
+router.delete("/:id")
 
 module.exports = router
