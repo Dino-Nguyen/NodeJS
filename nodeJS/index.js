@@ -1,17 +1,15 @@
 console.log('hello')
 const express = require("express")
 const studentsRouter = require("./students")
+const teachersRouter = require("./teachers")
 const app = express()
-const students = [
-    {id: 1, name:"A"},
-    {id: 2, name:"B"},
-]
+
 app.get("/", (req, res) => {
       res.send("hello 2")
 })
 
-app.use(studentsRouter)
-
+app.use("/students", studentsRouter)
+app.use("/teachers", teachersRouter)
 // app.get('/students', (req, res) => {
 //     res.json(students)
 // })
