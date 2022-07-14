@@ -8,7 +8,7 @@ const students = [
     {id: 4, name:"D", classID: 'b'},
 ]
 
-router.use(authMdw)
+// router.use(authMdw)
 
 router.get('/', authMdw, (req, res) => {
     // logging()
