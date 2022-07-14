@@ -7,6 +7,9 @@ const students = [
     {id: 2, name:"B", classID: 'a'},
     {id: 4, name:"D", classID: 'b'},
 ]
+
+router.use(authMdw)
+
 router.get('/', authMdw, (req, res) => {
     // logging()
     // if (checkLogin()) {
@@ -34,14 +37,14 @@ console.log(req.params)
 const student = students.find((s) => s.id === +req.params.id)
 res.json(student)
 })
-router.post('/',authMdw, (req, res) => {
+router.post('/', (req, res) => {
     students.push({
         id :3, 
         name: "C"
     })
     res.send('ok')
 })
-router.delete("/:id",authMdw, (req, res) => {
+router.delete("/:id", (req, res) => {
     students.splice(2, 1)
     res.send('delete 2')
 })
