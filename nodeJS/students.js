@@ -6,7 +6,15 @@ const students = [
     {id: 4, name:"D", classID: 'b'},
 ]
 router.get('/', (req, res) => {
-   res.json(students.filter((s) => s.classID === req.query.classID))
+   res.json(students.filter((s) => {
+    if (req.query.classID && s.classID !== req.query.classID) {
+        return false
+    }
+    if (req.query.id && s.id !== +req.query.id) {
+            return false
+    }
+    return true
+   }))
 })
 router.get('/:id/:classID', (req, res) => {
 
