@@ -1,11 +1,13 @@
-console.log('hello')
+
 const express = require("express")
 const studentsRouter = require("./students")
 const teachersRouter = require("./teachers")
+const logging = require('./logger')
 const app = express()
 
 app.get("/", (req, res) => {
-      res.send("hello 2")
+    logging();
+      res.send("hello s2")
 })
 
 app.use("/students", studentsRouter)

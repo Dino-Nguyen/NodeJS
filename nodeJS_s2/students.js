@@ -1,23 +1,25 @@
 const express = require("express")
 const router = express.Router();
+const logging = require('./logger')
 const students = [
     {id: 1, name:"A", classID: 'a'},
     {id: 2, name:"B", classID: 'a'},
     {id: 4, name:"D", classID: 'b'},
 ]
-// router.get('/', (req, res) => {
-//    res.json(students.filter((s) => {
-//     if (req.query.classID && s.classID !== req.query.classID) {
-//         return false
-//     }
-//     if (req.query.id && s.id !== +req.query.id) {
-//             return false
-//     }
-//     return true
-//    }))
-// })
+router.get('/', (req, res) => {
+   res.json(students.filter((s) => {
+    if (req.query.classID && s.classID !== req.query.classID) {
+        return false
+    }
+    if (req.query.id && s.id !== +req.query.id) {
+            return false
+    }
+    return true
+   }))
+})
 router.get('/:id', (req, res) => {
 console.log(req.params)
+logging()
 const student = students.find((s) => s.id === +req.params.id)
 res.json(student)
 })
