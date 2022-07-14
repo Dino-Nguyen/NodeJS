@@ -1,4 +1,10 @@
 const checkLogin = () => {
-    return true
+    return false
 }
-module.exports = checkLogin 
+const authMdw = (req, res, next) => {
+      const auth = true
+      if (auth) {
+        next();
+      }
+}
+module.exports = authMdw 

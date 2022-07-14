@@ -2,11 +2,11 @@
 const express = require("express")
 const studentsRouter = require("./students")
 const teachersRouter = require("./teachers")
-const logging = require('./logger')
+const loggerMdw = require('./logger')
 const app = express()
 
-app.get("/", (req, res) => {
-    logging();
+app.get("/", loggerMdw, (req, res) => {
+    // logging();
       res.send("hello s2")
 })
 

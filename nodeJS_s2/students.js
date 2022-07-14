@@ -1,15 +1,15 @@
 const express = require("express")
 const router = express.Router();
-const logging = require('./logger')
-const checkLogin = require('./auth')
+// const logging = require('./logger')
+const authMdw = require('./auth')
 const students = [
     {id: 1, name:"A", classID: 'a'},
     {id: 2, name:"B", classID: 'a'},
     {id: 4, name:"D", classID: 'b'},
 ]
-router.get('/', (req, res) => {
-    logging()
-    if (checkLogin()) {
+router.get('/', authMdw, (req, res) => {
+    // logging()
+    // if (checkLogin()) {
 
         res.json(students.filter((s) => {
             if (req.query.classID && s.classID !== req.query.classID) {
@@ -22,10 +22,11 @@ router.get('/', (req, res) => {
            }
     
   
-   ))}
-   else {
-    res.send('plz login')
-   }
+   ))
+// }
+//    else {
+//     res.send('plz login')
+//    }
 })
 router.get('/:id', (req, res) => {
 console.log(req.params)
