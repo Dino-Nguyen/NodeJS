@@ -31,17 +31,17 @@ router.get('/', authMdw, (req, res) => {
 //     res.send('plz login')
 //    }
 })
-router.get('/:id', (req, res) => {
+router.get('/:id', authMdw, (req, res) => {
 console.log(req.params)
 
 const student = students.find((s) => s.id === +req.params.id)
 res.json(student)
 })
 router.post('/', (req, res) => {
-    students.push({
-        id :3, 
-        name: "C"
-    })
+    if (students.find(s => s.id === req.body.id)) {
+        throw new Error("existed")
+    }
+    students.push(req.body)
     res.send('ok')
 })
 router.delete("/:id", (req, res) => {

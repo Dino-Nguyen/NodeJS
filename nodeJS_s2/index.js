@@ -9,6 +9,7 @@ const app = express()
 
 // app.use(loggerMdw)
 app.use(morgan("common"))
+app.use(express.json())
 
 app.get("/", (req, res) => {
     // logging();
@@ -29,7 +30,9 @@ app.use("/teachers",authMdw, teachersRouter)
 // })
 
 app.use("/static", express.static("assets"))
-
+app.use((err, req, res, next)=>{
+    res.status(500).send('sth went wrong')
+})
 app.listen(5001, () => {
     console.log('app is running at 5001')
 })
