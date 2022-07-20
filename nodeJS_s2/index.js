@@ -4,9 +4,11 @@ const studentsRouter = require("./students")
 const teachersRouter = require("./teachers")
 const loggerMdw = require('./logger')
 const authMdw = require("./auth")
+const morgan = require('morgan')
 const app = express()
 
-app.use(loggerMdw)
+// app.use(loggerMdw)
+app.use(morgan("common"))
 
 app.get("/", (req, res) => {
     // logging();
@@ -25,6 +27,8 @@ app.use("/teachers",authMdw, teachersRouter)
 //    })
 //    res.send("ok")
 // })
+
+app.use("/static", express.static("assets"))
 
 app.listen(5001, () => {
     console.log('app is running at 5001')

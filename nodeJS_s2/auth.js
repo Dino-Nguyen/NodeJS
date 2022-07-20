@@ -2,8 +2,10 @@ const checkLogin = () => {
     return false
 }
 const authMdw = (req, res, next) => {
-      const auth = true
-      if (auth) {
+      // const auth = true
+      const authUser = {username: "E"}
+      if (authUser) {
+        req.authUser = authUser
         next();
       }
       else {
