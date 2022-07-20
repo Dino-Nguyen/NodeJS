@@ -1,6 +1,8 @@
 
 const express = require("express")
 const authRouter = require("./auth")
+const teacherRouter = require("./teachers")
+
 
 const app = express()
 
@@ -11,6 +13,7 @@ app.get("/hello", (req, res)=> {
 })
 
 app.use("/auth", authRouter)
+app.use("/teachers", teacherRouter)
 
 app.listen(5001, () => {
     console.log('app is running at 5001')

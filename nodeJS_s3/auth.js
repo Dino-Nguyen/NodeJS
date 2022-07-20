@@ -1,9 +1,16 @@
 const express = require("express")
-
+const jwt = require("jsonwebtoken")
 const router = express.Router()
 
 router.post("/login", (req, res) => {
- res.send("login")
+    const token = jwt.sign({
+        username: req.body.username,
+    }, 
+    "KEY",
+    {
+        expiresIn: 5 * 60,
+    })
+ res.send(token)
 })
 
 module.exports = router
