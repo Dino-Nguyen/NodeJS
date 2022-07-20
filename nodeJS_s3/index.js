@@ -4,6 +4,8 @@ const authRouter = require("./auth")
 
 const app = express()
 
+app.use(express.json())
+
 app.get("/hello", (req, res)=> {
        res.send("chao")
 })
