@@ -1,7 +1,7 @@
 const express = require("express")
 const jwt = require("jsonwebtoken")
 const router = express.Router()
-
+const authMdw = require("./auth")
 const teachers = [
     {
         name: 'A',
@@ -14,19 +14,13 @@ const teachers = [
     },
 ]
 
-router.get("/", (req, res) =>{
-  const token = req.header.authorization
-  const jwtStr = token.split(" ")[1]
- jwt.verify(jwtStr, "KEY", (err, decoded) => {
-  if (!err) {
-    console.log(decoded)
-    res.json(teachers)
-  } else {
-    console.log(err)
-    res.status(401).send(err.message)
-  }
- })
+router.get("/",authMdw, (req, res) =>{
+  res.json(teachers)
    
+})
+
+router.post('/',(req, res)=> {
+
 })
 
 module.exports = router
