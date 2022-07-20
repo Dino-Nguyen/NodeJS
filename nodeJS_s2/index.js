@@ -31,7 +31,7 @@ app.use("/teachers",authMdw, teachersRouter)
 
 app.use("/static", express.static("assets"))
 app.use((err, req, res, next)=>{
-    res.status(500).send('sth went wrong')
+    res.status(500).send(err.message)
 })
 app.listen(5001, () => {
     console.log('app is running at 5001')
