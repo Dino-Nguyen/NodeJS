@@ -6,7 +6,7 @@ const connectToDb = () => {
   client.connect( () => {
     console.log("db connected")
     const database = client.db("mindx")
-    db.student = database.collection("stu")
+    db.student = database.collection("student")
     db.teacher = database.collection("teacher")
   })
 }
