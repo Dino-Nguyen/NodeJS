@@ -2,7 +2,9 @@ const express = require("express")
 const {MongoClient} = require("mongodb")
 const url = "mongodb://localhost:27017"
 const dbClient = new MongoClient(url)
-dbClient.connect()
+dbClient.connect(() => {
+    console.log("DB connected")
+})
 
 const app = express()
 
