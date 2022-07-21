@@ -9,9 +9,10 @@ studentRouter.get("/", async(req, res) => {
 })
 studentRouter.get("/:id", async (req, res) => {
     const id = req.params.id
-    const student =await db.student.find({
+    const student =await db.student.findOne({
         _id: ObjectId(id),
-    }).toArray()
+    })
+    //.toArray()
     res.json(student)
 })
 studentRouter.post("/", async (req, res) => {
