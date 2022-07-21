@@ -10,6 +10,7 @@ studentRouter.get("/", async(req, res) => {
     }
     const student = await db.student
     .find(filter)
+    .sort({dob: 1})
     .skip(Number(req.query.skip))
     .limit(Number(req.query.limit))
     .toArray()
