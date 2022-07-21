@@ -13,7 +13,9 @@ studentRouter.get("/", async(req, res) => {
     .sort({dob: 1})
     .skip(Number(req.query.skip))
     .limit(Number(req.query.limit))
+    .project({tag: 0})
     .toArray()
+    
     res.json(student)
 })
 studentRouter.get("/:id", async (req, res) => {
