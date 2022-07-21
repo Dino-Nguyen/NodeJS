@@ -28,7 +28,10 @@ dbClient.connect(async() => {
     //     }
     // ])
 
-   const items = await db.collection("mindx").find().toArray()
+   const items = await db.collection("mindx").find({
+    age : {$gt : 21}
+   }).toArray()
+   console.log(items)
 })
 const app = express()
 
