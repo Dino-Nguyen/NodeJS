@@ -2,7 +2,7 @@ const express = require("express")
 const {MongoClient} = require("mongodb")
 const url = "mongodb://localhost:27017"
 const dbClient = new MongoClient(url)
-dbClient.connect(() => {
+dbClient.connect(async() => {
     console.log("DB connected")
     const db = dbClient.db('mindx')
     // db.collection("mindx").insertOne({
@@ -27,6 +27,8 @@ dbClient.connect(() => {
     //         address: "SG"
     //     }
     // ])
+
+   const items = await db.collection("mindx").find().toArray()
 })
 const app = express()
 
