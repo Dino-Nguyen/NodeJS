@@ -4,9 +4,11 @@ const studentRouter = express.Router()
 const {db} = require('./db')
 
 studentRouter.get("/", async(req, res) => {
-    const student = await db.student.find({
-        gender: req.query.gender
-    }).toArray()
+    const filter = {}
+    if (req.query.gender) {
+           filter.gender = req.query.gender
+    }
+    const student = await db.student.find(filter).toArray()
     res.json(student)
 })
 studentRouter.get("/:id", async (req, res) => {
