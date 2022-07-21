@@ -6,6 +6,7 @@ const authMdw = (req, res , next) => {
     if(err) {
   res.status(401).send(err.message)
     } else {
+        req.username = decoded.username
         next()
     }
  })
