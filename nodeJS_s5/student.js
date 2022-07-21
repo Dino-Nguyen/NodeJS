@@ -8,7 +8,11 @@ studentRouter.get("/", async(req, res) => {
     if (req.query.gender) {
            filter.gender = req.query.gender
     }
-    const student = await db.student.find(filter).toArray()
+    const student = await db.student
+    .find(filter)
+    .skip(Number(req.query.skip))
+    .limit(Number(req.query.limit))
+    .toArray()
     res.json(student)
 })
 studentRouter.get("/:id", async (req, res) => {
