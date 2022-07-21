@@ -8,14 +8,14 @@ studentRouter.get("/", async(req, res) => {
     if (req.query.gender) {
            filter.gender = req.query.gender
     }
-    if (req.query.dob) {
-        try {
-           filter.dob = new Date(req.query.dob)
-        }catch (err) {
-            res.status(400).send("dob is not right format")
-            return
-        }
-    }
+    // if (req.query.dob) {
+    //     try {
+    //        filter.dob = new Date(req.query.dob)
+    //     }catch (err) {
+    //         res.status(400).send("dob is not right format")
+    //         return
+    //     }
+    // }
     const student = await db.student
     .find(filter)
     .sort({dob: 1})
