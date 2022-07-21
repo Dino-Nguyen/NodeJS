@@ -28,7 +28,27 @@ studentRouter.post("/", async (req, res) => {
         student : student
     })
 })
-studentRouter.put("/:id", (req, res) => {})
-studentRouter.delete("/:id", (req, res) => {})
+studentRouter.put("/:id", async (req, res) => {
+    const id = req.params.id
+    const result = await db.student.updateOne({
+        _id: ObjectId(id)
+    },{
+        $set: {
+            name: req.body.name,
+            gender: req.body.gender,
+            dob: new Date(req.body.dob)
+        }
+    })
+    res.json(result)
+})
+studentRouter.delete("/:id", async(req, res) => {
+ const id = req.params.id
+ const result = await db.student.deleteOne({
+    _id: ObjectId(id)
+ })
+ res.json({
+    deletedId : id,
+ })
+})
 
 module.exports = studentRouter
