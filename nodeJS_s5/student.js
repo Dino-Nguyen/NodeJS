@@ -37,6 +37,9 @@ studentRouter.put("/:id", async (req, res) => {
             name: req.body.name,
             gender: req.body.gender,
             dob: new Date(req.body.dob)
+        },
+        $currentDate: {
+            lastModified: true,
         }
     })
     res.json(result)
