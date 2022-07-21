@@ -38,6 +38,12 @@ studentRouter.put("/:id", async (req, res) => {
             gender: req.body.gender,
             dob: new Date(req.body.dob)
         },
+        // $push : {
+        //    tag : "red"
+        // },
+        $pull: {
+            tag : "red"
+        },
         $currentDate: {
             lastModified: true,
         }
